@@ -27,7 +27,7 @@ class Snipe(commands.Cog):
 
         if not data:
             await ctx.reply("There are no messages to snipe.")
-        
+            return
 
         embed = discord.Embed(
             color=discord.Color.dark_blue(),
