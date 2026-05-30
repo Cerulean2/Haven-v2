@@ -1,5 +1,6 @@
 import discord
 import os
+import sys
 
 from discord.ext import commands
 from dotenv import load_dotenv
@@ -25,4 +26,9 @@ bot = HavenBot(
     intents=intents
 )
 
-bot.run(os.getenv("DISCORD_TOKEN"))
+token = os.getenv("DISCORD_TOKEN")
+if not token:
+    logger.critical("DISCORD_TOKEN is not set in the environment variables.")
+    sys.exit(1)
+
+bot.run(token, log_handler=None)
