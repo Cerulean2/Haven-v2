@@ -49,4 +49,5 @@ except discord.PrivilegedIntentsRequired:
     sys.exit(1)
     
 except discord.LoginFailure:
-    logger.critical("An improper token has been passed. Please recheck DISCORD_TOKEN the environment variables")
+    logger.critical("An improper token has been passed. Please recheck DISCORD_TOKEN in the environment variables")
+    sys.exit(1)
