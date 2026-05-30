@@ -42,9 +42,11 @@ bot = HavenBot(
     intents=intents,
 )
 
-token = os.getenv("DISCORD_TOKEN")
-if not token:
-    logger.critical("DISCORD_TOKEN is not set in the environment variables.")
+try:
+    bot.run(token, reconnect=True, log_handler=None)
+except discord.PrivilegedIntentsRequired:
+    logger.critical("One or more privileged intents are not enabled in the Discord Developer Portal.")
     sys.exit(1)
-
-bot.run(token, log_handler=None)
+    
+except discord.LoginFailure:
+    logger.critical("An improper token has been passed. Please recheck DISCORD_TOKEN the environment variables")
