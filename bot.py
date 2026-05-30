@@ -11,6 +11,11 @@ load_dotenv()
 intents = discord.Intents.default()
 intents.message_content = True
 
+token = os.getenv("DISCORD_TOKEN")
+if not token:
+    logger.critical("DISCORD_TOKEN is not set in the environment variables.")
+    sys.exit(1)
+    
 class HavenBot(commands.Bot):
     async def setup_hook(self):
         for file in os.listdir(path="Commands/General"):
