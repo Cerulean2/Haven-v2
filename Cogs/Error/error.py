@@ -23,6 +23,14 @@ class Error(commands.Cog):
                     f"`--days` — days of messages to delete (0-7)"
                 )
                 await ctx.reply(embed=embed)
+            if ctx.command.qualified_name == "kick":
+                embed = discord.Embed(title="Missing Argument", color=discord.Color.red())
+                embed.description = (
+                    f"**Usage:** `{ctx.prefix}kick <user> [flags]`\n"
+                    f"**Flags:**\n"
+                    f"`--reason` — reason for the ban\n"
+                )
+                await ctx.reply(embed=embed)
         
         elif isinstance(error, commands.CommandOnCooldown):
             embed = discord.Embed(title="Cooldown", color=discord.Color.red())
