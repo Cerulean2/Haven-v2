@@ -57,9 +57,18 @@ class Error(commands.Cog):
             await ctx.reply(embed=embed)
         
         elif isinstance(error, commands.BadUnionArgument):
-            embed = discord.Embed(title="Invalid Argument", color=discord.Color.red())
-            embed.description = "Please provide a valid user or member."
-            
+            if ctx.command.qualified_name == "ban":
+                embed = discord.Embed(title="Invalid Argument", color=discord.Color.red())
+                embed.description = "Please provide a valid user to ban from this guild."
+                
+                await ctx.reply(embed=embed)
+            else:
+                logger.error("Exception in command '%s'", ctx.command, exc_info=error)
+        
+        elif isinstance(error, commands.MemberNotFound):
+            embed = discord.Embed(title="Invalid Member", color=discord.Color.red())
+            embed.description = "That's not a member of this guild. Please try a valid member."
+                
             await ctx.reply(embed=embed)
         
         else:
