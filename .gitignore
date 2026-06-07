@@ -3,3 +3,4 @@ config.yml
 logs/
 *.log
 __pycache__/
+Haven v2.code-workspace
