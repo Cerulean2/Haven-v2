@@ -7,6 +7,7 @@ This is a reboot of the Haven discord bot.
 | Environment Variable | Description |
 | ----------- | ----------- |
 | DISCORD_TOKEN | The token to log into your Discord Application |
+| KAT_API_URL | The url of the API used to fetch cat images |
 
 | Config | Description |
 | ----------- | ----------- |
