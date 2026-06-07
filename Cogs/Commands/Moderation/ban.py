@@ -27,12 +27,16 @@ class Ban(commands.Cog):
             await ctx.reply("Trying to ban the owner? Bold move.")
             return
         
+        if isinstance (user, discord.Member) and ctx.author.top_role <= user.top_role:
+            await ctx.reply("Your role is not high enough to ban that member.")
+            return
+        
         if isinstance (user, discord.Member) and ctx.guild.me.top_role <= user.top_role:
             await ctx.reply("My role is not high enough to ban that member.")
             return
         
         await ctx.guild.ban(user, reason=flags.reason, delete_message_days=flags.days)
-        await ctx.reply(f"👢 Banned `{user}`")
+        await ctx.reply(f"✅ Successfully banned {user.mention}")
 
 async def setup(bot):
     await bot.add_cog(Ban(bot))
