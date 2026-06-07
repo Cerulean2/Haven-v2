@@ -28,7 +28,7 @@ class Error(commands.Cog):
                 embed.description = (
                     f"**Usage:** `{ctx.prefix}kick <user> [flags]`\n"
                     f"**Flags:**\n"
-                    f"`--reason` — reason for the ban\n"
+                    f"`--reason` — reason for the kick\n"
                 )
                 await ctx.reply(embed=embed)
         
