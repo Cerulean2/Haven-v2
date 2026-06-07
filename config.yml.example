@@ -1,3 +1,7 @@
+# This is an example config.yml file. Please copy this file, rename it to config.yml, and then place it inside the root directory of the project
+# It is recommended you configure all settings in this file, some functionality may be affected if you leave some unset
+# See README.md for more information
+
 prefix: "h."
 log_level: "INFO"
 error_channel: "123456789"

@@ -4,10 +4,10 @@ This is a reboot of the Haven discord bot.
 
 [![Add to Discord](https://img.shields.io/badge/Add%20to%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/oauth2/authorize?client_id=1506465698124267552)
 
-| Environment Variable | Description |
-| ----------- | ----------- |
-| DISCORD_TOKEN | The token to log into your Discord Application |
-| KAT_API_URL | The url of the API used to fetch cat images |
+| Environment Variable | Description | Required |
+| ----------- | ----------- | ----------- |
+| DISCORD_TOKEN | The token to log into your Discord Application | Yes |
+| KAT_API_URL | The url of the API used to fetch cat images | No |
 
 | Config | Description |
 | ----------- | ----------- |
