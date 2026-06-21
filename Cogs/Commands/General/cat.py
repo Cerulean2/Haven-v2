@@ -26,19 +26,15 @@ class Cat(commands.Cog):
         
         if not url:
             logger.error("Error during cat command: KAT_API_URL is not set in the environment variables.")
-            await ctx.reply("My environment is missing the url for the cat API. Please inform the bot owner about this.")
+            await ctx.reply("My environment is misconfigured and cannot reach the cat API. Please inform the bot owner about this.")
             return
-        
-        try:
-            async with self.session.get(url, timeout=aiohttp.ClientTimeout(total=5)) as response:
-                data = await response.json()
-                cat_url = data.get("url")
-                
-        except Exception as e:
-            logger.error(f"Error with Kat API: {e}")
+
+        async with self.session.get(url, timeout=aiohttp.ClientTimeout(total=5)) as response:
+            data = await response.json()
+            cat_url = data.get("url")
         
         if not cat_url:
-            await ctx.reply("Sorry, the API response didn't return an image url. Please try again.")
+            await ctx.reply("Sorry, I wasn't able to get a cat gif. Please try again in a few minutes.")
             return
         
         embed = discord.Embed()
