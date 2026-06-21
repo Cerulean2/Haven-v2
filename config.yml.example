@@ -4,4 +4,6 @@
 
 prefix: "h."
 log_level: "INFO"
+ping_errors: "false"
 error_channel: "123456789"
+bot_owner: "123456789"

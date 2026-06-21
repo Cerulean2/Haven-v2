@@ -6,14 +6,16 @@ This is a reboot of the Haven discord bot.
 
 | Environment Variable | Description | Required |
 | ----------- | ----------- | ----------- |
-| DISCORD_TOKEN | The token to log into your Discord Application | Yes |
-| KAT_API_URL | The url of the API used to fetch cat images | No |
+| `DISCORD_TOKEN` | The token to log into your Discord Application | Yes |
+| `KAT_API_URL` | The url of the API used to fetch cat images | No |
 
-| Config | Description |
-| ----------- | ----------- |
-| prefix | The prefix the bot will listen for when using text commands |
-| log_level | The level of logging that should be printed to console |
-| error_channel | The discord channel the bot should forward errors to |
+| Config | Description | Default Value |
+| ----------- | ----------- | ----------- |
+| `prefix` | The prefix the bot will listen for when using text commands | `h.` |
+| `log_level` | The level of logging that should be printed to console | `INFO` |
+| `ping_errors` | Option to ping the bot owner | `false` |
+| `error_channel` | The discord channel the bot should forward errors to | `123456789` | 
+| `bot_owner` | The ID of the bot owner, used for various things. Example: The user to ping in the error channel, if enabled. | `123456789` |
 
 ## Issues & Bug Reports
 
