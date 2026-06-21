@@ -1,5 +1,6 @@
 import discord
 import os
+import aiohttp
 
 from discord.ext import commands
 from logger import logger
@@ -71,13 +72,26 @@ class Error(commands.Cog):
                 
             await ctx.reply(embed=embed)
         
+        elif isinstance(error, aiohttp.client_exceptions.ClientConnectorError):
+            if ctx.command.qualified_name == "cat":
+                await ctx.reply("Sorry, there was an issue when I tried to communicate with the cat API. Please try again in a few minutes!")
+                
+            channel = self.bot.get_channel(int(config["error_channel"]))
+            embed = discord.Embed(title="ClientConnectorError", color=discord.Color.red())
+            embed.description = f"A bad thing happened when {ctx.author} (`{ctx.author.id}`) used `{ctx.command}` ```\n{error}\n```"
+            
+            if config['ping_errors'] == "true":
+                await channel.send(content=f"<@{config['bot_owner']}>", embed=embed)
+            else:
+                await channel.send(embed=embed)
+        
         else:
             if config['log_level'] == "DEBUG":
                 logger.error("Exception in command '%s'", ctx.command, exc_info=error)
                 
             channel = self.bot.get_channel(int(config["error_channel"]))
-            embed = discord.Embed(title="Hmm...", color=discord.Color.red())
-            embed.description = f"A bad thing happened when {ctx.author} (`{ctx.author.id}`) used `{ctx.command}` ```\n{type(error).__name__}: {error}\n```"
+            embed = discord.Embed(title=f"{type(error).__name__}", color=discord.Color.red())
+            embed.description = f"A bad thing happened when {ctx.author} (`{ctx.author.id}`) used `{ctx.command}` ```\n{error}\n```"
             await channel.send(embed=embed)
             
 async def setup(bot):
