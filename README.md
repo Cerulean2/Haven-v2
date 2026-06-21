@@ -17,6 +17,18 @@ This is a reboot of the Haven discord bot.
 | `error_channel` | The discord channel the bot should forward errors to | `123456789` | 
 | `bot_owner` | The ID of the bot owner, used for various things. Example: The user to ping in the error channel, if enabled. | `123456789` |
 
+## Requirements
+
+```
+discord.py
+python-dotenv
+pyyaml
+PyNaCl
+davey
+```
+
+*Note: You can remove PyNaCl & davey, they are optional and not necessary to the application.*
+
 ## Issues & Bug Reports
 
 Want to report an issue? Please use the Issues section. All issues submitted in this repository will be reviewed regularly.
