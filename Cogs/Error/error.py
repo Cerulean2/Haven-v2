@@ -32,6 +32,17 @@ class Error(commands.Cog):
                     f"`--reason` — reason for the kick\n"
                 )
                 await ctx.reply(embed=embed)
+            if ctx.command.qualified_name == "timeout":
+                embed = discord.Embed(title="Missing Argument", color=discord.Color.red())
+                embed.description = (
+                    f"**Usage:** `{ctx.prefix}timeout <user> [flags]`\n"
+                    f"**Flags:**\n"
+                    f"`--reason` — reason for the timeout\n"
+                )
+                await ctx.reply(embed=embed)
+        
+        elif isinstance(error, commands.CommandNotFound):
+            return # Dont log errors for CommandNotFound, its just unnecessary spam.
         
         elif isinstance(error, commands.CommandOnCooldown):
             embed = discord.Embed(title="Cooldown", color=discord.Color.red())
