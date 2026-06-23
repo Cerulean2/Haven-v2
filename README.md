@@ -8,6 +8,7 @@ This is a reboot of the Haven discord bot.
 | ----------- | ----------- | ----------- |
 | `DISCORD_TOKEN` | The token to log into your Discord Application | Yes |
 | `KAT_API_URL` | The url of the API used to fetch cat images | No |
+| `PET_API_URL` | The url of the API used to generate "petpet" images | No |
 
 | Config | Description | Default Value |
 | ----------- | ----------- | ----------- |

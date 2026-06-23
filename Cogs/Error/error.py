@@ -32,6 +32,12 @@ class Error(commands.Cog):
                     f"`--reason` — reason for the kick\n"
                 )
                 await ctx.reply(embed=embed)
+            if ctx.command.qualified_name == "pet":
+                embed = discord.Embed(title="Missing Argument", color=discord.Color.red())
+                embed.description = (
+                    f"**Usage**: `{ctx.prefix}pet <user>`\n"
+                )
+                await ctx.reply(embed=embed)
             
         elif isinstance(error, commands.CommandNotFound):
             return # Dont log errors for CommandNotFound, its just unnecessary spam.
@@ -61,13 +67,10 @@ class Error(commands.Cog):
             await ctx.reply(embed=embed)
         
         elif isinstance(error, commands.BadUnionArgument):
-            if ctx.command.qualified_name == "ban":
-                embed = discord.Embed(title="Invalid Argument", color=discord.Color.red())
-                embed.description = "Please provide a valid user to ban from this guild."
+            embed = discord.Embed(title="Invalid Argument", color=discord.Color.red())
+            embed.description = "Please mention a valid user or provide their user id."
                 
-                await ctx.reply(embed=embed)
-            else:
-                logger.error("Exception in command '%s'", ctx.command, exc_info=error)
+            await ctx.reply(embed=embed)
         
         elif isinstance(error, commands.MemberNotFound):
             embed = discord.Embed(title="Invalid Member", color=discord.Color.red())

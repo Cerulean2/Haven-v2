@@ -45,5 +45,6 @@ class Environment:
         
         self.token = get_required_env("DISCORD_TOKEN")
         self.kat_api_url = get_optional_env("KAT_API_URL")
+        self.pet_api_url = get_optional_env("PET_API_URL")
 
 environment = Environment()
